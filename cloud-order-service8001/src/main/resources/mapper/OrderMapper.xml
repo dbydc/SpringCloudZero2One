@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbydc.zero2one.order.dao.OrderDao">
+
+    <resultMap id="orderMap" type="com.dbydc.zero2one.order.entity.Order">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="orderNum" column="order_num" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 通过订单号获取数据 -->
+    <select id="getByOrderNum" parameterType="string" resultMap="orderMap">
+        SELECT id, order_num, user_name, user_phone, create_time, update_time
+        FROM tb_order
+        <where>
+            <if test="orderNum != null">
+                order_num = #{orderNum}
+            </if>
+        </where>
+    </select>
+
+    <!-- 通过用户手机号获取批量数据 -->
+    <select id="getListByPhone" parameterType="string" resultMap="orderMap">
+        SELECT id, order_num, user_name, user_phone, create_time, update_time
+        FROM tb_order
+        <where>
+            <if test="userPhone != null and userPhone != ''">
+                user_phone = #{userPhone}
+            </if>
+        </where>
+    </select>
+
+    <!-- 新增 -->
+    <insert id="add" parameterType="com.dbydc.zero2one.order.entity.Order">
+        INSERT INTO tb_order (
+            order_num,
+            user_name,
+            user_phone,
+            create_time,
+            update_time
+        )
+        VALUES (
+            #{order.orderNum},
+            #{order.userName},
+            #{order.userPhone},
+            #{order.createTime},
+            #{order.updateTime}
+        )
+    </insert>
+
+    <!-- 通过订单号删除数据 -->
+    <delete id="deleteByOrderNum" parameterType="string">
+        DELETE FROM tb_order
+        <where>
+            <if test="orderNum != null">
+                order_num = #{orderNum}
+            </if>
+        </where>
+    </delete>
+
+    <!-- 通过订单号修改数据 -->
+    <update id="updateByOrderNum" parameterType="com.dbydc.zero2one.order.entity.Order">
+        UPDATE tb_order
+        SET user_name = #{order.userName}
+        <where>
+            <if test="order.OrderNum != null">
+                order_num = #{order.orderNum}
+            </if>
+        </where>
+    </update>
+
+</mapper>

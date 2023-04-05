@@ -1,0 +1,9 @@
+#Ignore Intellij Project Files
+.idea
+*.iml
+out
+gen
+.idea/.gitgonre
+.idea/.name
+.idea/misc.xml
+target

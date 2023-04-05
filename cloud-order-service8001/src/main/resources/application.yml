@@ -1,0 +1,41 @@
+#服务端口号
+server:
+  port: 8001
+
+spring:
+  application:
+    #服务名称
+    name: cloud-order-service
+  #数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/zero2one?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+
+mybatis-plus:
+  #扫描资源（resources）路径下，mapper目录的所有以 .xml 结尾的mapper文件
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    #下划线转驼峰
+    map-underscore-to-camel-case: true
+
+feign:
+  tokenId: 666
+  circuitbreaker:
+    enabled: true
+  client:
+    config:
+      default:
+        #connectTimeout：防止由于服务器处理时间长而阻塞调用者。
+        connectTimeout: 5000
+        #readTimeout：从建立连接开始应用，当返回响应时间过长时触发。
+        readTimeout: 8000
+        #日志级别：none、basic、headers、full
+        loggerLevel: full
+    #默认是 true ，设置为 false 代表以自定义的 @Configuration 配置类的值为最高优先级，配置文件(*.yml)的默认值次之。
+    default-to-properties: false
+
+logging:
+  level:
+    com.dbydc.zero2one.order.feign.*: debug
