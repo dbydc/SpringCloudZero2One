@@ -15,6 +15,7 @@
         <module>cloud-payment-service6002</module>
         <module>cloud-order-service8002</module>
         <module>cloud-order-service8003</module>
+        <module>cloud-order-service8004</module>
     </modules>
 
     <properties>

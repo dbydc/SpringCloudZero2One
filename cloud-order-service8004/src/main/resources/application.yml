@@ -1,0 +1,30 @@
+#服务端口号
+server:
+  port: 8004
+
+blogger: application.yml-大白有点菜
+
+use:
+  configurationFile: application.yml
+
+spring:
+  application:
+    #服务名称
+    name: cloud-order-service
+#  profiles:
+#    #开发环境
+#    active: dev
+    #测试环境
+#    active: test
+    #生产环境
+#    active: prod
+
+logging:
+  level:
+    org:
+      springframework:
+        core:
+          env: DEBUG
+        boot:
+          context:
+            config: TRACE

@@ -2,6 +2,9 @@
 server:
   port: 8003
 
+use:
+  configurationFile: application.yml
+
 spring:
   application:
     #服务名称
@@ -12,3 +15,6 @@ spring:
 #    username: root
 #    password: 123456
 #    url: jdbc:mysql://localhost:3306/zero2one?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+
+
+

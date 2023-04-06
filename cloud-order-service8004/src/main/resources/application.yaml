@@ -1,0 +1,23 @@
+#服务端口号
+server:
+  port: 8204
+
+blogger: application.yaml-大白有点菜
+
+use:
+  configurationFile: application.yaml
+
+spring:
+  application:
+    #服务名称
+    name: cloud-order-service
+
+logging:
+  level:
+    org:
+      springframework:
+        core:
+          env: DEBUG
+        boot:
+          context:
+            config: TRACE

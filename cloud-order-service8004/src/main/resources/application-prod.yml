@@ -1,0 +1,6 @@
+#服务端口号
+server:
+  port: 9003
+
+use:
+  configurationFile: application-prod.yml 和 application.yml

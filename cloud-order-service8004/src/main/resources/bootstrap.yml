@@ -1,0 +1,23 @@
+#服务端口号
+server:
+  port: 8304
+
+blogger: bootstrap.yml-大白有点菜
+
+use:
+  configurationFile: bootstrap.yml
+
+spring:
+  application:
+    #服务名称
+    name: cloud-order-service
+
+logging:
+  level:
+    org:
+      springframework:
+        core:
+          env: DEBUG
+        boot:
+          context:
+            config: TRACE

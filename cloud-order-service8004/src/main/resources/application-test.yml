@@ -1,0 +1,6 @@
+#服务端口号
+server:
+  port: 9002
+
+use:
+  configurationFile: application-test.yml 和 application.yml
