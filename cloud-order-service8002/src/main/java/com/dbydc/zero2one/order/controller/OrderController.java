@@ -2,6 +2,7 @@ package com.dbydc.zero2one.order.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.dbydc.zero2one.common.enums.OperateStatusEnum;
 import com.dbydc.zero2one.common.enums.ResponseCodeEnum;
 import com.dbydc.zero2one.common.utils.ResponseData;
 import com.dbydc.zero2one.order.entity.Order;
@@ -55,5 +56,20 @@ public class OrderController {
 
         return CollectionUtils.isEmpty(orders) ? ResponseData.success(ResponseCodeEnum.NULL_DATA.getCode())
                 : ResponseData.success(ResponseCodeEnum.SUCCESS.getCode(), orders);
+    }
+
+    /**
+     * 新增数据
+     * @param orderRequest 订单请求实体
+     * @return
+     */
+    @PostMapping("/add")
+    public ResponseData add(@RequestBody OrderRequest orderRequest) {
+        Order order = new Order();
+        BeanUtils.copyProperties(orderRequest, order);
+        boolean saveResult = orderService.save(order);
+
+        return saveResult == true ? ResponseData.success(ResponseCodeEnum.SUCCESS.getCode(), OperateStatusEnum.ADD_SUCCESS.getMessage())
+                : ResponseData.success(ResponseCodeEnum.ERROR.getCode(), OperateStatusEnum.ADD_FAIL.getMessage());
     }
 }
